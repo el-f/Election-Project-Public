@@ -17,7 +17,6 @@ public class CitizenInitForm extends Form {
 
     public CitizenInitForm(String type) {
         this.type = type;
-        name = new TextField();
         HBox nameBox = new HBox();
         name = new TextField();
         View.alignTextField("Name: ", name, nameBox);
