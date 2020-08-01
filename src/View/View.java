@@ -161,12 +161,14 @@ public class View {
             defaultPage.getChildren().add(instruction);
             firstLaunch = false;
         }
+        
         BarChart<String, Number> ballotsGauge = buildGauge("Ballot Boxes", ballotsNum, "TAN");
         ballotsGauge.setOnMousePressed(event -> showAB.fire());
         BarChart<String, Number> citizensGauge = buildGauge("Citizens", citizensNum, "DARKSLATEGRAY");
         citizensGauge.setOnMousePressed(event -> showAC.fire());
         BarChart<String, Number> partiesGauge = buildGauge("Political Parties", partiesNum, "MAROON");
         partiesGauge.setOnMousePressed(event -> showAP.fire());
+        
         HBox gauges = new HBox(ballotsGauge, citizensGauge, partiesGauge);
         VBox.setMargin(gauges, new Insets(200, 0, 0, 0));
         gauges.setAlignment(Pos.CENTER);
@@ -174,6 +176,7 @@ public class View {
         gauges.setMaxHeight(100);
         gauges.setMaxWidth(300);
         defaultPage.getChildren().add(gauges);
+        
         defaultPage.setAlignment(Pos.CENTER);
         borderPane.setCenter(defaultPage);
         setCurrentView(Views.Main);
@@ -206,12 +209,16 @@ public class View {
         TableView tableView = new TableView();
         TableColumn serialNum = new TableColumn<>("#");
         serialNum.setCellValueFactory(new PropertyValueFactory<>("serialNum"));
+        
         TableColumn address = new TableColumn<>("Address");
         address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        
         TableColumn type = new TableColumn<>("Type");
         type.setCellValueFactory(new PropertyValueFactory<>("typeToString"));
+        
         TableColumn designatedCitizensAmount = new TableColumn<>("Voters");
         designatedCitizensAmount.setCellValueFactory(new PropertyValueFactory<>("designatedCitizensAmount"));
+        
         serialNum.setStyle("-fx-alignment: CENTER;");
         designatedCitizensAmount.setStyle("-fx-alignment: CENTER;");
         serialNum.setMaxWidth(100);
@@ -220,11 +227,13 @@ public class View {
         designatedCitizensAmount.setMinWidth(50);
         type.setMaxWidth(70);
         type.setMinWidth(70);
+        
         tableView.getColumns().addAll(serialNum, type, address, designatedCitizensAmount);
         tableView.getItems().addAll(ballots);
         addDetailsAlertToTableView(tableView,810);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tableView.setMaxWidth(300);
+        
         VBox result = new VBox(label, tableView);
         result.setSpacing(5);
         result.setAlignment(Pos.CENTER);
@@ -240,35 +249,45 @@ public class View {
         TableView tableView = new TableView();
         TableColumn type = new TableColumn<>("Type");
         type.setCellValueFactory(new PropertyValueFactory<>("typeToString"));
+        
         TableColumn name = new TableColumn<>("First Name");
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        
         TableColumn ID = new TableColumn<>("ID");
         ID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        
         TableColumn yearOfBirth = new TableColumn<>("Born");
         yearOfBirth.setCellValueFactory(new PropertyValueFactory<>("yearOfBirth"));
         yearOfBirth.setMaxWidth(50);
         yearOfBirth.setMinWidth(50);
+        
         TableColumn canVote = new TableColumn<>("Can Vote");
         canVote.setCellValueFactory(new PropertyValueFactory<>("canVote"));
         canVote.setMaxWidth(80);
         canVote.setMinWidth(80);
+        
         TableColumn numOfSicknessDays = new TableColumn<>("Sickness Days");
         numOfSicknessDays.setCellValueFactory(new PropertyValueFactory<>("numOfSicknessDays"));
+        
         TableColumn wearingProtectionSuit = new TableColumn<>("Protection Suit");
         wearingProtectionSuit.setCellValueFactory(new PropertyValueFactory<>("wearingProtectionSuit"));
+        
         TableColumn carryWeapon = new TableColumn<>("Weapon");
         carryWeapon.setCellValueFactory(new PropertyValueFactory<>("carryWeapon"));
         carryWeapon.setMaxWidth(80);
         carryWeapon.setMinWidth(80);
+        
         TableColumn partyToString = new TableColumn<>("Political Party");
         partyToString.setCellValueFactory(new PropertyValueFactory<>("partyToString"));
         partyToString.setMaxWidth(120);
         partyToString.setMinWidth(120);
+        
         tableView.getColumns().addAll(type, name, ID, yearOfBirth, canVote, numOfSicknessDays,
                 wearingProtectionSuit, carryWeapon, partyToString);
         tableView.getItems().addAll(citizens);
         tableView.getSortOrder().addAll(type);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        
         VBox result = new VBox(label, tableView);
         result.setAlignment(Pos.CENTER);
         result.setSpacing(5);
@@ -284,15 +303,19 @@ public class View {
         TableView tableView = new TableView();
         TableColumn name = new TableColumn<>("Name");
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        
         TableColumn wing = new TableColumn<>("Wing");
         wing.setCellValueFactory(new PropertyValueFactory<>("wingToString"));
+        
         TableColumn formedDate = new TableColumn<>("Formed Date");
         formedDate.setCellValueFactory(new PropertyValueFactory<>("formedDate"));
+        
         TableColumn nomineesAmount = new TableColumn<>("Nominees");
         nomineesAmount.setCellValueFactory(new PropertyValueFactory<>("nomineesAmount"));
         nomineesAmount.setMaxWidth(80);
         nomineesAmount.setMinWidth(80);
         nomineesAmount.setStyle("-fx-alignment: CENTER;");
+        
         wing.setMaxWidth(50);
         wing.setMinWidth(50);
         name.setMinWidth(70);
@@ -301,6 +324,7 @@ public class View {
         addDetailsAlertToTableView(tableView,500);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tableView.setMaxWidth(350);
+        
         VBox result = new VBox(label, tableView);
         result.setAlignment(Pos.CENTER);
         result.setSpacing(5);
@@ -322,12 +346,15 @@ public class View {
         TableColumn<String, String> party = new TableColumn<>("Party");
         party.setCellValueFactory(str ->
                 new SimpleStringProperty(str.getValue().substring(0, str.getValue().lastIndexOf('-'))));
+        
         TableColumn<String, String> votes = new TableColumn<>("Votes");
         votes.setCellValueFactory(str ->
                 new SimpleStringProperty(str.getValue().substring(str.getValue().lastIndexOf('-') + 1)));
+        
         tableView.getColumns().addAll(party, votes);
         tableView.getItems().addAll(electionResults);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        
         votes.setComparator(Comparator.comparingInt(Integer::parseInt));
         votes.setSortType(TableColumn.SortType.DESCENDING);
         votes.setMaxWidth(100);
@@ -335,19 +362,23 @@ public class View {
         votes.setStyle("-fx-alignment: CENTER;");
         tableView.getSortOrder().addAll(votes);
         tableView.setMaxHeight(220);
+        
         Label votingPercent = new Label(">Total percentage of voting: " + df2.format(votingPercentage) + '%');
         Label winningParty = new Label(">The Winning Party is: " + winningPartyName.replace('-', '\0'));
         Label primeMinister = new Label(pMinister);
         primeMinister.setWrapText(true);
         votingPercent.setWrapText(true);
         winningParty.setWrapText(true);
+        
         VBox textDetails = new VBox(winningParty, primeMinister, votingPercent);
         textDetails.setSpacing(15);
         textDetails.setPadding(new Insets(30, 0, 0, 20));
         textDetails.setMaxWidth(500);
+        
         HBox details = new HBox(tableView, textDetails);
         details.setSpacing(10);
         details.setAlignment(Pos.CENTER);
+        
         VBox result = new VBox(pieChart, details);
         result.setSpacing(30);
         result.setAlignment(Pos.CENTER);
