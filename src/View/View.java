@@ -424,8 +424,7 @@ public class View {
     private void initMenuItemsIDs() throws IllegalAccessException {
         for (int i = 1; i <= 19; i++) {
             Field item = this.getClass().getDeclaredFields()[i];
-            String itemName = item.getName();
-            ((MenuItem) item.get(this)).setId(itemName);
+            ((MenuItem) item.get(this)).setId(item.getName());
         }
     }
 
