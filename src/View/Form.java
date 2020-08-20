@@ -10,7 +10,7 @@ public class Form {
     public VBox formView;
     protected Button submitButton;
 
-    public void addEventToSubmitButton(EventHandler<ActionEvent> eventHandler) {
+    public void addEventHandlerToSubmitButton(EventHandler<ActionEvent> eventHandler) {
         submitButton.setOnAction(eventHandler);
         formView.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER){

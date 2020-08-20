@@ -24,17 +24,17 @@ public class Controller {
         /*
             BallotBoxes menu events
          */
-        view.addEventToShowBB(event ->
+        view.addEventHandlerToMenuItem("showAB", event ->
                 view.setToBallotsTable(election.getBallotBoxes()));
 
-        view.addEventToAddBM(event -> {
+        view.addEventHandlerToMenuItem("addBM", event -> {
             TypeForm typeForm = new TypeForm();
             view.setCenterToVBox(typeForm.formView);
             view.setCurrentView(Views.Form);
-            typeForm.addEventToSubmitButton(addBBMSecondForm(typeForm));
+            typeForm.addEventHandlerToSubmitButton(addBBMSecondForm(typeForm));
         });
 
-        view.addEventToAddRB(event -> {
+        view.addEventHandlerToMenuItem("addRB", event -> {
             try {
                 election.addRandomBallotBox();
                 updateForSuccess();
@@ -43,7 +43,7 @@ public class Controller {
             }
         });
 
-        view.addEventToAddMRB(event -> {
+        view.addEventHandlerToMenuItem("addMRB", event -> {
             try {
                 int num = getNumFromUser();
                 if (num > 0) {
@@ -58,17 +58,17 @@ public class Controller {
         /*
             Citizens menu events
          */
-        view.addEventToShowAC(event ->
+        view.addEventHandlerToMenuItem("showAC", event ->
                 view.setToCitizensTable(election.getVoters().getSet()));
 
-        view.addEventToAddCM(event -> {
+        view.addEventHandlerToMenuItem("addCM", event -> {
             TypeForm typeForm = new TypeForm();
             view.setCenterToVBox(typeForm.formView);
             view.setCurrentView(Views.Form);
-            typeForm.addEventToSubmitButton(addCMSecondForm(typeForm));
+            typeForm.addEventHandlerToSubmitButton(addCMSecondForm(typeForm));
         });
 
-        view.addEventToAddRC(event -> {
+        view.addEventHandlerToMenuItem("addRC", event -> {
             try {
                 election.addRandomCitizen(true);
                 updateForSuccess();
@@ -77,7 +77,7 @@ public class Controller {
             }
         });
 
-        view.addEventToAddMRC(event -> {
+        view.addEventHandlerToMenuItem("addMRC", event -> {
             try {
                 int num = getNumFromUser();
                 if (num > 0) {
@@ -92,17 +92,17 @@ public class Controller {
         /*
             Parties menu events
          */
-        view.addEventToShowAP(event ->
+        view.addEventHandlerToMenuItem("showAP", event ->
                 view.setToPartiesTable(election.getPoliticalParties()));
 
-        view.addEventToAddPM(event -> {
+        view.addEventHandlerToMenuItem("addPM", event -> {
             PartyInitForm partyInitForm = new PartyInitForm();
             view.setCenterToVBox(partyInitForm.formView);
             view.setCurrentView(Views.Form);
-            partyInitForm.addEventToSubmitButton(addPMFinishedForm(partyInitForm));
+            partyInitForm.addEventHandlerToSubmitButton(addPMFinishedForm(partyInitForm));
         });
 
-        view.addEventToAddRP(event -> {
+        view.addEventHandlerToMenuItem("addRP", event -> {
             try {
                 if (election.addRandomParty())
                     updateForSuccess();
@@ -113,7 +113,7 @@ public class Controller {
             }
         });
 
-        view.addEventToAddMRP(event -> {
+        view.addEventHandlerToMenuItem("addMRP", event -> {
             try {
                 int num = getNumFromUser();
                 if (num > 0) {
@@ -128,14 +128,14 @@ public class Controller {
         /*
             Nominees menu events
          */
-        view.addEventToAddNM(event -> {
+        view.addEventHandlerToMenuItem("addNM", event -> {
             CitizenInitForm citizenInitForm = new CitizenInitForm("nominee");
             view.setCenterToVBox(citizenInitForm.formView);
             view.setCurrentView(Views.Form);
-            citizenInitForm.addEventToSubmitButton(addCMFinishedSecondForm(citizenInitForm));
+            citizenInitForm.addEventHandlerToSubmitButton(addCMFinishedSecondForm(citizenInitForm));
         });
 
-        view.addEventToAddRN(event -> {
+        view.addEventHandlerToMenuItem("addRN", event -> {
             try {
                 election.addRandomNomineeToRandomParty();
                 updateForSuccess();
@@ -144,7 +144,7 @@ public class Controller {
             }
         });
 
-        view.addEventToAddMRN(event -> {
+        view.addEventHandlerToMenuItem("addMRN", event -> {
             try {
                 int num = getNumFromUser();
                 if (num > 0) {
@@ -159,7 +159,7 @@ public class Controller {
         /*
             Election menu events
          */
-        view.addEventToElect(event -> {
+        view.addEventHandlerToMenuItem("elect", event -> {
             try {
                 election.randomVote();
                 view.enableVotesResults();
@@ -169,7 +169,7 @@ public class Controller {
             }
         });
 
-        view.addEventToShowResults(event -> {
+        view.addEventHandlerToMenuItem("showResults", event -> {
             List<String> results = election.buildStringListFromHashMap(election.getFinalResults());
             String winningParty = election.getWinningPartyName(results);
             view.setToElectionResults(
@@ -180,7 +180,7 @@ public class Controller {
         });
 
         //Misc menu events
-        view.addEventToClearScene(event -> view.setToMainView(
+        view.addEventHandlerToMenuItem("clear", event -> view.setToMainView(
                 election.getBallotBoxes().size(),
                 election.getVoters().size(),
                 election.getPoliticalParties().size()));
@@ -215,7 +215,7 @@ public class Controller {
             if (type.getIsAtLeastOneSelected()) {
                 CitizenInitForm citizenInitForm = new CitizenInitForm(type.getType());
                 view.setCenterToVBox(citizenInitForm.formView);
-                citizenInitForm.addEventToSubmitButton(addCMFinishedSecondForm(citizenInitForm));
+                citizenInitForm.addEventHandlerToSubmitButton(addCMFinishedSecondForm(citizenInitForm));
             } else {
                 view.showAlert(AlertType.ERROR, "Please Choose One!");
             }
@@ -227,7 +227,7 @@ public class Controller {
             if (type.getIsAtLeastOneSelected()) {
                 BallotInitForm ballotInitForm = new BallotInitForm(type.getType());
                 view.setCenterToVBox(ballotInitForm.formView);
-                ballotInitForm.addEventToSubmitButton(addBBMFinishedSecondForm(ballotInitForm));
+                ballotInitForm.addEventHandlerToSubmitButton(addBBMFinishedSecondForm(ballotInitForm));
             } else {
                 view.showAlert(AlertType.ERROR, "Please Choose One!");
             }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class HelperUtilities {
+public abstract class HelperUtilities {
 
     public static final double FAIR_CHANCE = 0.5;
     public static final double HIGH_CHANCE = 0.8;

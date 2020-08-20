@@ -23,9 +23,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class View {
     private BorderPane borderPane;
@@ -44,9 +46,9 @@ public class View {
 
     private Views currentView;
 
-    private static DecimalFormat df2 = new DecimalFormat("#.##");
+    private static final DecimalFormat df2 = new DecimalFormat("#.##");
 
-    public View(Stage primaryStage) {
+    public View(Stage primaryStage) throws IllegalAccessException {
         MenuBar menuBar = new MenuBar();
 
         Menu ballotBoxesMenu = new Menu("BallotBoxes");
@@ -88,6 +90,7 @@ public class View {
         exit.setOnAction(event -> Platform.exit());
         misc.getItems().addAll(clear, exit);
 
+        initMenuItemsIDs();
         menuBar.getMenus().addAll(misc, ballotBoxesMenu, citizensMenu, partiesMenu, nomineesMenu, electionMenu);
         borderPane = new BorderPane();
         Button backButton = new Button("<-");
@@ -161,14 +164,14 @@ public class View {
             defaultPage.getChildren().add(instruction);
             firstLaunch = false;
         }
-        
+
         BarChart<String, Number> ballotsGauge = buildGauge("Ballot Boxes", ballotsNum, "TAN");
         ballotsGauge.setOnMousePressed(event -> showAB.fire());
         BarChart<String, Number> citizensGauge = buildGauge("Citizens", citizensNum, "DARKSLATEGRAY");
         citizensGauge.setOnMousePressed(event -> showAC.fire());
         BarChart<String, Number> partiesGauge = buildGauge("Political Parties", partiesNum, "MAROON");
         partiesGauge.setOnMousePressed(event -> showAP.fire());
-        
+
         HBox gauges = new HBox(ballotsGauge, citizensGauge, partiesGauge);
         VBox.setMargin(gauges, new Insets(200, 0, 0, 0));
         gauges.setAlignment(Pos.CENTER);
@@ -176,7 +179,7 @@ public class View {
         gauges.setMaxHeight(100);
         gauges.setMaxWidth(300);
         defaultPage.getChildren().add(gauges);
-        
+
         defaultPage.setAlignment(Pos.CENTER);
         borderPane.setCenter(defaultPage);
         setCurrentView(Views.Main);
@@ -209,16 +212,16 @@ public class View {
         TableView tableView = new TableView();
         TableColumn serialNum = new TableColumn<>("#");
         serialNum.setCellValueFactory(new PropertyValueFactory<>("serialNum"));
-        
+
         TableColumn address = new TableColumn<>("Address");
         address.setCellValueFactory(new PropertyValueFactory<>("address"));
-        
+
         TableColumn type = new TableColumn<>("Type");
         type.setCellValueFactory(new PropertyValueFactory<>("typeToString"));
-        
+
         TableColumn designatedCitizensAmount = new TableColumn<>("Voters");
         designatedCitizensAmount.setCellValueFactory(new PropertyValueFactory<>("designatedCitizensAmount"));
-        
+
         serialNum.setStyle("-fx-alignment: CENTER;");
         designatedCitizensAmount.setStyle("-fx-alignment: CENTER;");
         serialNum.setMaxWidth(100);
@@ -227,13 +230,13 @@ public class View {
         designatedCitizensAmount.setMinWidth(50);
         type.setMaxWidth(70);
         type.setMinWidth(70);
-        
+
         tableView.getColumns().addAll(serialNum, type, address, designatedCitizensAmount);
         tableView.getItems().addAll(ballots);
-        addDetailsAlertToTableView(tableView,810);
+        addDetailsAlertToTableView(tableView, 810);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tableView.setMaxWidth(300);
-        
+
         VBox result = new VBox(label, tableView);
         result.setSpacing(5);
         result.setAlignment(Pos.CENTER);
@@ -249,45 +252,45 @@ public class View {
         TableView tableView = new TableView();
         TableColumn type = new TableColumn<>("Type");
         type.setCellValueFactory(new PropertyValueFactory<>("typeToString"));
-        
+
         TableColumn name = new TableColumn<>("First Name");
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        
+
         TableColumn ID = new TableColumn<>("ID");
         ID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        
+
         TableColumn yearOfBirth = new TableColumn<>("Born");
         yearOfBirth.setCellValueFactory(new PropertyValueFactory<>("yearOfBirth"));
         yearOfBirth.setMaxWidth(50);
         yearOfBirth.setMinWidth(50);
-        
+
         TableColumn canVote = new TableColumn<>("Can Vote");
         canVote.setCellValueFactory(new PropertyValueFactory<>("canVote"));
         canVote.setMaxWidth(80);
         canVote.setMinWidth(80);
-        
+
         TableColumn numOfSicknessDays = new TableColumn<>("Sickness Days");
         numOfSicknessDays.setCellValueFactory(new PropertyValueFactory<>("numOfSicknessDays"));
-        
+
         TableColumn wearingProtectionSuit = new TableColumn<>("Protection Suit");
         wearingProtectionSuit.setCellValueFactory(new PropertyValueFactory<>("wearingProtectionSuit"));
-        
+
         TableColumn carryWeapon = new TableColumn<>("Weapon");
         carryWeapon.setCellValueFactory(new PropertyValueFactory<>("carryWeapon"));
         carryWeapon.setMaxWidth(80);
         carryWeapon.setMinWidth(80);
-        
+
         TableColumn partyToString = new TableColumn<>("Political Party");
         partyToString.setCellValueFactory(new PropertyValueFactory<>("partyToString"));
         partyToString.setMaxWidth(120);
         partyToString.setMinWidth(120);
-        
+
         tableView.getColumns().addAll(type, name, ID, yearOfBirth, canVote, numOfSicknessDays,
                 wearingProtectionSuit, carryWeapon, partyToString);
         tableView.getItems().addAll(citizens);
         tableView.getSortOrder().addAll(type);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        
+
         VBox result = new VBox(label, tableView);
         result.setAlignment(Pos.CENTER);
         result.setSpacing(5);
@@ -303,28 +306,28 @@ public class View {
         TableView tableView = new TableView();
         TableColumn name = new TableColumn<>("Name");
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        
+
         TableColumn wing = new TableColumn<>("Wing");
         wing.setCellValueFactory(new PropertyValueFactory<>("wingToString"));
-        
+
         TableColumn formedDate = new TableColumn<>("Formed Date");
         formedDate.setCellValueFactory(new PropertyValueFactory<>("formedDate"));
-        
+
         TableColumn nomineesAmount = new TableColumn<>("Nominees");
         nomineesAmount.setCellValueFactory(new PropertyValueFactory<>("nomineesAmount"));
         nomineesAmount.setMaxWidth(80);
         nomineesAmount.setMinWidth(80);
         nomineesAmount.setStyle("-fx-alignment: CENTER;");
-        
+
         wing.setMaxWidth(50);
         wing.setMinWidth(50);
         name.setMinWidth(70);
         tableView.getColumns().addAll(name, wing, formedDate, nomineesAmount);
         tableView.getItems().addAll(parties);
-        addDetailsAlertToTableView(tableView,500);
+        addDetailsAlertToTableView(tableView, 500);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tableView.setMaxWidth(350);
-        
+
         VBox result = new VBox(label, tableView);
         result.setAlignment(Pos.CENTER);
         result.setSpacing(5);
@@ -346,15 +349,15 @@ public class View {
         TableColumn<String, String> party = new TableColumn<>("Party");
         party.setCellValueFactory(str ->
                 new SimpleStringProperty(str.getValue().substring(0, str.getValue().lastIndexOf('-'))));
-        
+
         TableColumn<String, String> votes = new TableColumn<>("Votes");
         votes.setCellValueFactory(str ->
                 new SimpleStringProperty(str.getValue().substring(str.getValue().lastIndexOf('-') + 1)));
-        
+
         tableView.getColumns().addAll(party, votes);
         tableView.getItems().addAll(electionResults);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        
+
         votes.setComparator(Comparator.comparingInt(Integer::parseInt));
         votes.setSortType(TableColumn.SortType.DESCENDING);
         votes.setMaxWidth(100);
@@ -362,33 +365,33 @@ public class View {
         votes.setStyle("-fx-alignment: CENTER;");
         tableView.getSortOrder().addAll(votes);
         tableView.setMaxHeight(220);
-        
+
         Label votingPercent = new Label(">Total percentage of voting: " + df2.format(votingPercentage) + '%');
         Label winningParty = new Label(">The Winning Party is: " + winningPartyName.replace('-', '\0'));
         Label primeMinister = new Label(pMinister);
         primeMinister.setWrapText(true);
         votingPercent.setWrapText(true);
         winningParty.setWrapText(true);
-        
+
         VBox textDetails = new VBox(winningParty, primeMinister, votingPercent);
         textDetails.setSpacing(15);
         textDetails.setPadding(new Insets(30, 0, 0, 20));
         textDetails.setMaxWidth(500);
-        
+
         HBox details = new HBox(tableView, textDetails);
         details.setSpacing(10);
         details.setAlignment(Pos.CENTER);
-        
+
         VBox result = new VBox(pieChart, details);
         result.setSpacing(30);
         result.setAlignment(Pos.CENTER);
         borderPane.setCenter(result);
         setCurrentView(Views.ElectionResults);
     }
-    
+
     //In our use case it's safe to use, no runtime failures.
     @SuppressWarnings({"rawtypes", "unchecked"})
-    private void addDetailsAlertToTableView(TableView tableView, int width){
+    private void addDetailsAlertToTableView(TableView tableView, int width) {
         tableView.setRowFactory(tView -> {
             TableRow row = new TableRow<>();
             row.setOnMouseClicked(event -> {
@@ -418,75 +421,25 @@ public class View {
         showResults.fire();
     }
 
-    public void addEventToAddBM(EventHandler<ActionEvent> addBBM_EventHandler) {
-        addBM.setOnAction(addBBM_EventHandler);
+    private void initMenuItemsIDs() throws IllegalAccessException {
+        for (int i = 1; i <= 19; i++) {
+            Field item = this.getClass().getDeclaredFields()[i];
+            String itemName = item.getName();
+            ((MenuItem) item.get(this)).setId(itemName);
+        }
     }
 
-    public void addEventToAddCM(EventHandler<ActionEvent> addCM_EventHandler) {
-        addCM.setOnAction(addCM_EventHandler);
-    }
-
-    public void addEventToAddNM(EventHandler<ActionEvent> addNM_eventHandler) {
-        addNM.setOnAction(addNM_eventHandler);
-    }
-
-    public void addEventToAddPM(EventHandler<ActionEvent> addPM_EventHandler) {
-        addPM.setOnAction(addPM_EventHandler);
-    }
-
-    public void addEventToAddRC(EventHandler<ActionEvent> addRC_EventHandler) {
-        addRC.setOnAction(addRC_EventHandler);
-    }
-
-    public void addEventToAddRN(EventHandler<ActionEvent> addRN_EventHandler) {
-        addRN.setOnAction(addRN_EventHandler);
-    }
-
-    public void addEventToAddRP(EventHandler<ActionEvent> addRP_EventHandler) {
-        addRP.setOnAction(addRP_EventHandler);
-    }
-
-    public void addEventToAddRB(EventHandler<ActionEvent> addRB_EventHandler) {
-        addRB.setOnAction(addRB_EventHandler);
-    }
-
-    public void addEventToShowBB(EventHandler<ActionEvent> showBB_EventHandler) {
-        showAB.setOnAction(showBB_EventHandler);
-    }
-
-    public void addEventToShowAC(EventHandler<ActionEvent> showAC_EventHandler) {
-        showAC.setOnAction(showAC_EventHandler);
-    }
-
-    public void addEventToShowAP(EventHandler<ActionEvent> showAP_EventHandler) {
-        showAP.setOnAction(showAP_EventHandler);
-    }
-
-    public void addEventToAddMRB(EventHandler<ActionEvent> addMRB_EventHandler) {
-        addMRB.setOnAction(addMRB_EventHandler);
-    }
-
-    public void addEventToAddMRC(EventHandler<ActionEvent> addMRC_EventHandler) {
-        addMRC.setOnAction(addMRC_EventHandler);
-    }
-
-    public void addEventToAddMRP(EventHandler<ActionEvent> addMRP_EventHandler) {
-        addMRP.setOnAction(addMRP_EventHandler);
-    }
-
-    public void addEventToAddMRN(EventHandler<ActionEvent> addMRN_EventHandler) {
-        addMRN.setOnAction(addMRN_EventHandler);
-    }
-
-    public void addEventToElect(EventHandler<ActionEvent> elect_EventHandler) {
-        elect.setOnAction(elect_EventHandler);
-    }
-
-    public void addEventToShowResults(EventHandler<ActionEvent> showResults_EventHandler) {
-        showResults.setOnAction(showResults_EventHandler);
-    }
-
-    public void addEventToClearScene(EventHandler<ActionEvent> clearScene_EventHandler) {
-        clear.setOnAction(clearScene_EventHandler);
+    public void addEventHandlerToMenuItem(String menuItemID, EventHandler<ActionEvent> eventHandler) {
+        Stream.of(
+                showAB, addMRB, addBM, addRB,
+                showAC, addMRC, addCM, addRC,
+                showAP, addPM, addRP, addMRP,
+                addNM, addRN, addMRN,
+                elect, showResults,
+                clear, exit
+        )
+                .filter(menuItem -> menuItem.getId().equalsIgnoreCase(menuItemID))
+                .findFirst()
+                .ifPresent(menuItem -> menuItem.setOnAction(eventHandler));
     }
 }
