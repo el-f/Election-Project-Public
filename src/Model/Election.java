@@ -139,16 +139,15 @@ public class Election {
     }
 
     private boolean checkPartyNameAvailable(String partyName) {
-        for (PoliticalParty pp : politicalParties) {
-            if (pp.getName().equals(partyName))
-                return false;
-        }
-        return true;
+        return politicalParties
+                .stream()
+                .noneMatch(pp -> pp.getName().equals(partyName));
     }
 
     private boolean checkIfMaxNumRandomPartiesReached() {
-        return HelperUtilities.defaultParties.stream().filter(partyName ->
-                !checkPartyNameAvailable(partyName)).count() == HelperUtilities.defaultParties.size();
+        return HelperUtilities.defaultParties
+                .stream()
+                .noneMatch(this::checkPartyNameAvailable);
     }
 
     public void addNumOfRandomParties(int amount) throws MyException {

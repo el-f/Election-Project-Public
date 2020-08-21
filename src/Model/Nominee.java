@@ -2,12 +2,16 @@ package Model;
 
 public class Nominee extends Citizen {
     private PoliticalParty party;
+
+    //----------For TableView------------//
     private String partyToString;
 
+    @SuppressWarnings("unused")
     public String getPartyToString() {
         partyToString = party.getName();
         return partyToString;
     }
+    //-----------------------------------//
 
     public Nominee(PoliticalParty party, String _name, int _id, int _yearOfBirth) throws MyException {
         super(_name, _id, _yearOfBirth);

@@ -18,14 +18,17 @@ public class BallotBox<T extends Citizen> {
     public int getDesignatedCitizensAmount() {
         return designatedCitizens.size();
     }
+
     @SuppressWarnings("unused")
     public String getTypeToString() {
         return type.getSimpleName();
     }
+
     @SuppressWarnings("unused")
     public int getSerialNum() {
         return serialNum;
     }
+
     @SuppressWarnings("unused")
     public String getAddress() {
         return address;
@@ -70,8 +73,11 @@ public class BallotBox<T extends Citizen> {
     public double getPercentageOfVoters() {
         if (designatedCitizens.isEmpty())
             return 0;
-        return votingResults.values().stream().mapToDouble(Integer::doubleValue).sum() / designatedCitizens.size()
-                * 100;
+        return votingResults
+                .values()
+                .stream()
+                .mapToDouble(Integer::doubleValue)
+                .sum() / designatedCitizens.size() * 100;
     }
 
 
