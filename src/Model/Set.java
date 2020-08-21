@@ -3,6 +3,8 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+//Implemented as required in project specifications but not all methods are actually used
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public class Set<T> {
     private final List<T> set;
 

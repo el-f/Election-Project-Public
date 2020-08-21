@@ -22,6 +22,7 @@ public class Soldier extends Citizen {
     }
 
     //------------Used For TableView------------//
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public boolean isCarryWeapon() {
         return carryWeapon;
     }
@@ -42,9 +43,12 @@ public class Soldier extends Citizen {
 
     }
 
-    public boolean equals(Soldier other) {
-        return super.equals(other) && carryWeapon == other.carryWeapon;
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:11):
+//    public boolean equals(Soldier other) {
+//        return super.equals(other) && carryWeapon == other.carryWeapon;
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:11)
 
     public String toString() {
         return super.toString() + " | CarryWeapon: " + carryWeapon;

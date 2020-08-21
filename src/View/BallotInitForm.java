@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class BallotInitForm extends Form {
-    public TextField address;
+    public final TextField address;
     public final String type;
 
     public BallotInitForm(String type) {

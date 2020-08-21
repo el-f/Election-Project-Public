@@ -11,7 +11,11 @@ import javafx.scene.text.Text;
 
 public class CitizenInitForm extends Form {
 
-    public TextField name, ID, yearOfBirth, numSickDays, party;
+    public final TextField name;
+    public final TextField ID;
+    public final TextField yearOfBirth;
+    public TextField numSickDays;
+    public TextField party;
     public CheckBox carryWeapon, isWearingProtectionSuit;
     public final String type;
 

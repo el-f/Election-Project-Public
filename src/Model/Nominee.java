@@ -3,13 +3,11 @@ package Model;
 public class Nominee extends Citizen {
     private PoliticalParty party;
 
-    //----------For TableView------------//
-    private String partyToString;
-
-    @SuppressWarnings("unused")
+    //----------Used For TableView------------//
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public String getPartyToString() {
-        partyToString = party.getName();
-        return partyToString;
+
+        return party.getName();
     }
     //-----------------------------------//
 
@@ -29,9 +27,12 @@ public class Nominee extends Citizen {
         else throw new MyException("Tried adding null party to nominee");
     }
 
-    public boolean equals(Nominee other) {
-        return super.equals(other) && this.party.equals(other.party);
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:02):
+//    public boolean equals(Nominee other) {
+//        return super.equals(other) && this.party.equals(other.party);
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:02)
 
     public String toString() {
         return "<" + this.getClass().getSimpleName() + "> " + "(" + party.getName() + ") " + name + " | ID: " + id + " | Born: " + yearOfBirth + " | Can Vote: " + canVote;

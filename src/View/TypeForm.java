@@ -9,7 +9,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class TypeForm extends Form {
-    private RadioButton regular, sick, soldier, sickSoldier;
+    private final RadioButton regular;
+    private final RadioButton sick;
+    private final RadioButton soldier;
+    private final RadioButton sickSoldier;
 
     public TypeForm() {
         ToggleGroup toggleGroup = new ToggleGroup();

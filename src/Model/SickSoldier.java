@@ -5,10 +5,12 @@ public class SickSoldier extends Soldier implements Sickness {
     private int numOfSicknessDays;
 
     //---------------Used For TableView---------------//
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public int getNumOfSicknessDays() {
         return numOfSicknessDays;
     }
 
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public boolean isWearingProtectionSuit() {
         return wearingProtectionSuit;
     }
@@ -41,10 +43,13 @@ public class SickSoldier extends Soldier implements Sickness {
         this.numOfSicknessDays = numOfSicknessDays;
     }
 
-    public boolean equals(SickSoldier other) {
-        return super.equals(other) && numOfSicknessDays == other.numOfSicknessDays &&
-                wearingProtectionSuit == other.wearingProtectionSuit;
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:02):
+//    public boolean equals(SickSoldier other) {
+//        return super.equals(other) && numOfSicknessDays == other.numOfSicknessDays &&
+//                wearingProtectionSuit == other.wearingProtectionSuit;
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:02)
 
     public String toString() {
         return super.toString() + " | numOfSicknessDays: " + numOfSicknessDays +

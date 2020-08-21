@@ -13,21 +13,21 @@ public class PoliticalParty {
     }
 
     private eWing wing;
-    private double popularity;
+    private final double popularity;
     private LocalDate formedDate;
     private final List<Nominee> nominees;
     public static final int COUNTRY_DECLARATION_YEAR = 1948;
 
     //------------Used For TableView-------------------------//
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public int getNomineesAmount() {
         return nominees.size();
     }
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public String getWingToString() {
         return wing.name();
     }
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public LocalDate getFormedDate() {
         return formedDate;
     }
@@ -55,9 +55,12 @@ public class PoliticalParty {
         nominees.add(n);
     }
 
-    public boolean removeNominee(Nominee n) {
-        return nominees.remove(n);
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:02):
+//    public boolean removeNominee(Nominee n) {
+//        return nominees.remove(n);
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:02)
 
     public void addRandomNominee() throws MyException {
         nominees.add(new Nominee(this));
@@ -114,9 +117,12 @@ public class PoliticalParty {
         return false;
     }
 
-    public boolean equals(PoliticalParty other) {
-        return this.name.equals(other.name) && this.wing.name().equals(other.wing.name());
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:11):
+//    public boolean equals(PoliticalParty other) {
+//        return this.name.equals(other.name) && this.wing.name().equals(other.wing.name());
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:11)
 
     public String getName() {
         return name;

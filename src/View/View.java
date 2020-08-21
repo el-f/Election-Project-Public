@@ -30,14 +30,27 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class View {
-    private BorderPane borderPane;
-    private MenuItem showAB, addMRB, addBM, addRB;
-    private MenuItem showAC, addMRC, addCM, addRC;
-    private MenuItem showAP, addPM, addRP, addMRP;
-    private MenuItem addNM, addRN, addMRN;
-    private MenuItem elect, showResults;
-    private MenuItem clear, exit;
-    private Alert alert;
+    private final BorderPane borderPane;
+    private final MenuItem showAB;
+    private final MenuItem addMRB;
+    private final MenuItem addBM;
+    private final MenuItem addRB;
+    private final MenuItem showAC;
+    private final MenuItem addMRC;
+    private final MenuItem addCM;
+    private final MenuItem addRC;
+    private final MenuItem showAP;
+    private final MenuItem addPM;
+    private final MenuItem addRP;
+    private final MenuItem addMRP;
+    private final MenuItem addNM;
+    private final MenuItem addRN;
+    private final MenuItem addMRN;
+    private final MenuItem elect;
+    private final MenuItem showResults;
+    private final MenuItem clear;
+    private final MenuItem exit;
+    private final Alert alert;
     private static boolean firstLaunch = true;
 
     public enum Views {

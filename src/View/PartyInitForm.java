@@ -12,8 +12,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class PartyInitForm extends Form {
-    public TextField name, year, month, day;
-    public RadioButton leftWing, rightWing, centerWing;
+    public final TextField name;
+    public final TextField year;
+    public final TextField month;
+    public final TextField day;
+    public final RadioButton leftWing;
+    public final RadioButton rightWing;
+    public final RadioButton centerWing;
 
     public PartyInitForm() {
         name = new TextField();

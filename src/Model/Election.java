@@ -66,10 +66,12 @@ public class Election {
     public List<BallotBox<? extends Citizen>> getBallotBoxes() {
         return ballotBoxes;
     }
-
-    public boolean removeCitizen(Citizen c) {
-        return voters.remove(c);
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:02):
+//    public boolean removeCitizen(Citizen c) {
+//        return voters.remove(c);
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:02)
 
     public void addRandomCitizen(boolean assignToBox) throws MyException {
         int randomInt = HelperUtilities.getRandomInt(0, 3);
@@ -116,13 +118,14 @@ public class Election {
         return true;
     }
 
-    public boolean removeParty(PoliticalParty party) {
-        if (politicalParties.remove(party)) {
-            removePartyFromBallots(party);
-            return true;
-        }
-        return false;
-    }
+//Implemented as required in project specifications but not actually used
+//    public boolean removeParty(PoliticalParty party) {
+//        if (politicalParties.remove(party)) {
+//            removePartyFromBallots(party);
+//            return true;
+//        }
+//        return false;
+//    }
 
     public boolean addRandomParty() throws MyException {
         if (checkIfMaxNumRandomPartiesReached())
@@ -167,9 +170,12 @@ public class Election {
         ballotBoxes.forEach(b -> b.getVotingResults().put(party, 0));
     }
 
-    private void removePartyFromBallots(PoliticalParty party) {
-        ballotBoxes.forEach(b -> b.getVotingResults().remove(party));
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:11):
+//    private void removePartyFromBallots(PoliticalParty party) {
+//        ballotBoxes.forEach(b -> b.getVotingResults().remove(party));
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:11)
 
     public void addBallotBox(BallotBox<?> b) {
         addExistingPartiesToBallot(b);
@@ -197,9 +203,12 @@ public class Election {
         addBallotBox(new BallotBox<>(address, classType));
     }
 
-    public boolean removeBallotBox(BallotBox<?> b) {
-        return ballotBoxes.remove(b);
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:02):
+//    public boolean removeBallotBox(BallotBox<?> b) {
+//        return ballotBoxes.remove(b);
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:02)
 
     private void addExistingPartiesToBallot(BallotBox<?> b) {
         politicalParties.forEach(p -> b.getVotingResults().put(p, 0));
@@ -407,25 +416,28 @@ public class Election {
         return stb.toString();
     }
 
-    public boolean equals(Election other) {
-        if (this.electionDate != other.electionDate || this.voters.size() != other.voters.size()
-                || this.ballotBoxes.size() != other.ballotBoxes.size()
-                || this.politicalParties.size() != other.politicalParties.size())
-            return false;
-        for (int i = 0; i < voters.size(); i++) {
-            if (!this.voters.get(i).equals(other.voters.get(i)))
-                return false;
-        }
-        for (int i = 0; i < politicalParties.size(); i++) {
-            if (!this.politicalParties.get(i).equals(other.politicalParties.get(i)))
-                return false;
-        }
-        for (int i = 0; i < ballotBoxes.size(); i++) {
-            if (!this.ballotBoxes.get(i).equals(other.ballotBoxes.get(i)))
-                return false;
-        }
-        return true;
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:02):
+//    public boolean equals(Election other) {
+//        if (this.electionDate != other.electionDate || this.voters.size() != other.voters.size()
+//                || this.ballotBoxes.size() != other.ballotBoxes.size()
+//                || this.politicalParties.size() != other.politicalParties.size())
+//            return false;
+//        for (int i = 0; i < voters.size(); i++) {
+//            if (!this.voters.get(i).equals(other.voters.get(i)))
+//                return false;
+//        }
+//        for (int i = 0; i < politicalParties.size(); i++) {
+//            if (!this.politicalParties.get(i).equals(other.politicalParties.get(i)))
+//                return false;
+//        }
+//        for (int i = 0; i < ballotBoxes.size(); i++) {
+//            if (!this.ballotBoxes.get(i).equals(other.ballotBoxes.get(i)))
+//                return false;
+//        }
+//        return true;
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:02)
 
 
 }

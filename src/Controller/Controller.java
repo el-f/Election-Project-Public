@@ -14,8 +14,8 @@ import static View.View.Views;
 
 public class Controller {
 
-    private Election election;
-    private View view;
+    private final Election election;
+    private final View view;
 
     public Controller(Election _election, View _view) {
         election = _election;

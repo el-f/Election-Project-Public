@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Citizen {
 
-    protected String name;
+    protected final String name;
     protected int id;
     protected int yearOfBirth;
     protected boolean canVote;
@@ -13,19 +13,19 @@ public class Citizen {
     public static final int MIN_AGE = 21, MAX_AGE = 150;
 
     //------------Used For TableView-------------------------//
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public int getYearOfBirth() {
         return yearOfBirth;
     }
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public int getId() {
         return id;
     }
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public String getName() {
         return name;
     }
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public String getTypeToString() {
         return this.getClass().getSimpleName();
     }
@@ -99,12 +99,15 @@ public class Citizen {
         isAssignedToBox = true;
     }
 
-    public boolean equals(Citizen other) {
-        return this.getClass().equals(other.getClass()) && this.name.equals(other.name)
-                && this.id == other.id && this.yearOfBirth == other.yearOfBirth
-                && this.canVote == other.canVote && this.isAssignedToBox == other.isAssignedToBox
-                && this.hasVoted == other.hasVoted;
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:13):
+//    public boolean equals(Citizen other) {
+//        return this.getClass().equals(other.getClass()) && this.name.equals(other.name)
+//                && this.id == other.id && this.yearOfBirth == other.yearOfBirth
+//                && this.canVote == other.canVote && this.isAssignedToBox == other.isAssignedToBox
+//                && this.hasVoted == other.hasVoted;
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:13)
 
     public String toString() {
         return "<" + this.getClass().getSimpleName() + "> " + name + " | ID: " + id +

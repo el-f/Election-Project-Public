@@ -7,29 +7,29 @@ public class BallotBox<T extends Citizen> {
     private final int serialNum;
     private static final int FIRST_NUM = 1;
     private static int serialNumGen = FIRST_NUM;
-    private String address;
+    private final String address;
     private final Set<T> designatedCitizens;
     public final Class<T> type; //Class file to force the type field to be extension of Citizen.
     private final HashMap<PoliticalParty, Integer> votingResults;
 
 
     //---------------Used For TableView----------------//
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public int getDesignatedCitizensAmount() {
         return designatedCitizens.size();
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public String getTypeToString() {
         return type.getSimpleName();
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public int getSerialNum() {
         return serialNum;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public String getAddress() {
         return address;
     }
@@ -93,9 +93,12 @@ public class BallotBox<T extends Citizen> {
         else throw new MyException("Not the correct type of citizen (" + c.getClass().getSimpleName() + ")");
     }
 
-    public boolean equals(BallotBox<?> other) {
-        return type.equals(other.type) && this.serialNum == other.serialNum && this.address.equals(other.address);
-    }
+//Implemented as required in project specifications but not actually used
+// --Commented out by Inspection START (21/08/2020 11:11):
+//    public boolean equals(BallotBox<?> other) {
+//        return type.equals(other.type) && this.serialNum == other.serialNum && this.address.equals(other.address);
+//    }
+// --Commented out by Inspection STOP (21/08/2020 11:11)
 
     public String toString() {
         StringBuilder str = new StringBuilder();

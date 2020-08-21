@@ -1,5 +1,6 @@
 package Model;
 
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public interface Sickness {
     int MIN_DAYS = 0, MAX_DAYS = 60;
     int MIN_QUARANTINE_DAYS_TO_VOTE = 14;
