@@ -9,10 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class TypeForm extends Form {
-    private final RadioButton regular;
-    private final RadioButton sick;
-    private final RadioButton soldier;
-    private final RadioButton sickSoldier;
+    private final RadioButton regular, sick, soldier, sickSoldier;
 
     public TypeForm() {
         ToggleGroup toggleGroup = new ToggleGroup();
@@ -30,12 +27,12 @@ public class TypeForm extends Form {
         formView = new VBox(text, regular, sick, soldier, sickSoldier, submitButton);
         formView.setAlignment(Pos.CENTER_LEFT);
         formView.setSpacing(10);
-        VBox.setMargin(text,new Insets(0,0,0,400));
-        VBox.setMargin(regular,new Insets(0,0,0,400));
-        VBox.setMargin(sick,new Insets(0,0,0,400));
-        VBox.setMargin(soldier,new Insets(0,0,0,400));
-        VBox.setMargin(sickSoldier,new Insets(0,0,0,400));
-        VBox.setMargin(submitButton,new Insets(0,0,0,400));
+        VBox.setMargin(text, new Insets(0, 0, 0, 400));
+        VBox.setMargin(regular, new Insets(0, 0, 0, 400));
+        VBox.setMargin(sick, new Insets(0, 0, 0, 400));
+        VBox.setMargin(soldier, new Insets(0, 0, 0, 400));
+        VBox.setMargin(sickSoldier, new Insets(0, 0, 0, 400));
+        VBox.setMargin(submitButton, new Insets(0, 0, 0, 400));
 
     }
 

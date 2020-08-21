@@ -12,13 +12,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class PartyInitForm extends Form {
-    public final TextField name;
-    public final TextField year;
-    public final TextField month;
-    public final TextField day;
-    public final RadioButton leftWing;
-    public final RadioButton rightWing;
-    public final RadioButton centerWing;
+    public final TextField name, year, month, day;
+    public final RadioButton leftWing, rightWing, centerWing;
 
     public PartyInitForm() {
         name = new TextField();
@@ -47,9 +42,9 @@ public class PartyInitForm extends Form {
         VBox.setMargin(nameBox, new Insets(0, 350, 0, 0));
         VBox.setMargin(dateBox, new Insets(0, 350, 0, 0));
         Text text = new Text("Please Fill all fields:");
-        VBox.setMargin(text,new Insets(0, 0, 0, 400));
+        VBox.setMargin(text, new Insets(0, 0, 0, 400));
         Text wingText = new Text("Wing:");
-        VBox.setMargin(wingText,new Insets(0, 0, 0, 400));
+        VBox.setMargin(wingText, new Insets(0, 0, 0, 400));
         formView = new VBox(text, nameBox, dateBox, wingText, leftWing, rightWing, centerWing, submitButton);
         formView.setAlignment(Pos.CENTER_LEFT);
         formView.setSpacing(10);
