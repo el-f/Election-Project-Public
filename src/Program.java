@@ -8,9 +8,7 @@ public class Program extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Election election = Election.initDefault();
-        View view = new View(stage);
-        new Controller(election, view);
+       new Controller(Election.initDefault(), new View(stage));
     }
 
     public static void main(String[] args) {
