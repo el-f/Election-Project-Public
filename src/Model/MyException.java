@@ -1,13 +1,13 @@
 package Model;
 
 public class MyException extends Exception {
-    private final String msg;
+    private final String message;
 
     public MyException(String _msg) {
-        msg = _msg;
+        message = _msg;
     }
 
-    public String getMessage() {
-        return msg;
+    public String toString() {
+        return message;
     }
 }

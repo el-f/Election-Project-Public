@@ -337,12 +337,6 @@ public class Controller {
     }
 
     private void alertForException(Exception exception) {
-        String message;
-        if (exception instanceof MyException)
-            message = exception.getMessage();
-        else {
-            message = "Error! " + exception.getClass().getSimpleName();
-        }
-        view.showAlert(AlertType.ERROR, message + ".\nPlease Try Again.");
+        view.showAlert(AlertType.ERROR, exception + ".\nPlease Try Again.");
     }
 }
