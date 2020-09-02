@@ -337,6 +337,6 @@ public class Controller {
     }
 
     private void alertForException(Exception exception) {
-        view.showAlert(AlertType.ERROR, exception + ".\nPlease Try Again.");
+        view.showAlert(AlertType.ERROR, exception.toString());
     }
 }
