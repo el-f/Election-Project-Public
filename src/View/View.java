@@ -8,14 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontSmoothingType;
@@ -25,6 +23,7 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.Field;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -95,6 +94,7 @@ public class View {
         borderPane = new BorderPane();
         Button backButton = new Button("<-");
         backButton.setOnAction(event -> clear.fire());
+        addCursorHandling(backButton, borderPane);
         HBox top = new HBox(backButton, menuBar);
         HBox.setHgrow(menuBar, Priority.ALWAYS);
         borderPane.setTop(top);
@@ -171,6 +171,8 @@ public class View {
         citizensGauge.setOnMousePressed(event -> showAC.fire());
         BarChart<String, Number> partiesGauge = buildGauge("Political Parties", partiesNum, "MAROON");
         partiesGauge.setOnMousePressed(event -> showAP.fire());
+
+        Arrays.asList(ballotsGauge, citizensGauge, partiesGauge).forEach(bc -> addCursorHandling(bc, borderPane));
 
         HBox gauges = new HBox(ballotsGauge, citizensGauge, partiesGauge);
         VBox.setMargin(gauges, new Insets(200, 0, 0, 0));
@@ -407,6 +409,11 @@ public class View {
             });
             return row;
         });
+    }
+
+    static void addCursorHandling(Region object, Pane pane) {
+        object.setOnMouseEntered(event -> pane.setCursor(Cursor.HAND));
+        object.setOnMouseExited(event -> pane.setCursor(Cursor.DEFAULT));
     }
 
     public void showAlert(Alert.AlertType type, String message) {
