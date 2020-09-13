@@ -8,8 +8,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import java.util.Arrays;
-
 public class TypeForm extends Form {
     private final RadioButton regular, sick, soldier, sickSoldier;
 
