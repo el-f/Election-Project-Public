@@ -38,11 +38,13 @@ public class CitizenInitForm extends Form {
             HBox numSickDaysBox = new HBox();
             View.alignTextField("Num Of Sickness Days: ", numSickDays, numSickDaysBox);
             isWearingProtectionSuit = new CheckBox("Protection Suit");
+            View.addCursorHandling(isWearingProtectionSuit, formView);
             formView.getChildren().addAll(numSickDaysBox, isWearingProtectionSuit);
             VBox.setMargin(numSickDaysBox, new Insets(0, 350, 0, 0));
         }
         if (type.equalsIgnoreCase("soldier") || type.equalsIgnoreCase("sickSoldier")) {
             carryWeapon = new CheckBox("Carrying Weapon");
+            View.addCursorHandling(carryWeapon, formView);
             formView.getChildren().addAll(carryWeapon);
         }
         if (type.equalsIgnoreCase("nominee")) {

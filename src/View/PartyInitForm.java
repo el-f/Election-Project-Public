@@ -11,6 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.util.Arrays;
+
 public class PartyInitForm extends Form {
     public final TextField name, year, month, day;
     public final RadioButton leftWing, rightWing, centerWing;
@@ -25,12 +27,9 @@ public class PartyInitForm extends Form {
         day.setPrefWidth(30);
         ToggleGroup toggleGroup = new ToggleGroup();
         leftWing = new RadioButton("Left");
-        leftWing.setToggleGroup(toggleGroup);
         leftWing.setSelected(true);
         rightWing = new RadioButton("Right");
-        rightWing.setToggleGroup(toggleGroup);
         centerWing = new RadioButton("Center");
-        centerWing.setToggleGroup(toggleGroup);
         HBox nameBox = new HBox();
         View.alignTextField("Party Name:    ", name, nameBox);
         Text txt = new Text("Formed Date: ");
@@ -46,6 +45,11 @@ public class PartyInitForm extends Form {
         Text wingText = new Text("Wing:");
         VBox.setMargin(wingText, new Insets(0, 0, 0, 400));
         formView = new VBox(text, nameBox, dateBox, wingText, leftWing, rightWing, centerWing, submitButton);
+        Arrays.asList(leftWing, rightWing, centerWing)
+                .forEach(rb -> {
+                    rb.setToggleGroup(toggleGroup);
+                    View.addCursorHandling(rb, formView);
+                });
         formView.setAlignment(Pos.CENTER_LEFT);
         formView.setSpacing(10);
         VBox.setMargin(leftWing, new Insets(0, 0, 0, 400));
