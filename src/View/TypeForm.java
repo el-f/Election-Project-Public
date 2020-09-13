@@ -28,7 +28,7 @@ public class TypeForm extends Form {
                     VBox.setMargin(child, new Insets(0, 0, 0, 400));
                     if (child instanceof RadioButton) {
                         ((RadioButton) child).setToggleGroup(toggleGroup);
-                        View.addCursorHandling((RadioButton) child, formView);
+                        View.setCursorAsSelect((RadioButton) child);
                     }
                 });
     }

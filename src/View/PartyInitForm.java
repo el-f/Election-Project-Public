@@ -48,7 +48,7 @@ public class PartyInitForm extends Form {
         Arrays.asList(leftWing, rightWing, centerWing)
                 .forEach(rb -> {
                     rb.setToggleGroup(toggleGroup);
-                    View.addCursorHandling(rb, formView);
+                    View.setCursorAsSelect(rb);
                 });
         formView.setAlignment(Pos.CENTER_LEFT);
         formView.setSpacing(10);

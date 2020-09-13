@@ -107,7 +107,7 @@ public class View {
         borderPane = new BorderPane();
         Button backButton = new Button("⬅");
         backButton.setOnAction(event -> clear.fire());
-        addCursorHandling(backButton, borderPane);
+        setCursorAsSelect(backButton);
         HBox top = new HBox(backButton, menuBar);
         HBox.setHgrow(menuBar, Priority.ALWAYS);
         borderPane.setTop(top);
@@ -185,7 +185,7 @@ public class View {
         BarChart<String, Number> partiesGauge = buildGauge("Political Parties", partiesNum, "MAROON");
         partiesGauge.setOnMousePressed(event -> showAP.fire());
 
-        Arrays.asList(ballotsGauge, citizensGauge, partiesGauge).forEach(bc -> addCursorHandling(bc, borderPane));
+        Arrays.asList(ballotsGauge, citizensGauge, partiesGauge).forEach(View::setCursorAsSelect);
 
         HBox gauges = new HBox(ballotsGauge, citizensGauge, partiesGauge);
         VBox.setMargin(gauges, new Insets(200, 0, 0, 0));
@@ -424,9 +424,8 @@ public class View {
         });
     }
 
-    static void addCursorHandling(Region object, Pane pane) {
-        object.setOnMouseEntered(event -> pane.setCursor(Cursor.HAND));
-        object.setOnMouseExited(event -> pane.setCursor(Cursor.DEFAULT));
+    static void setCursorAsSelect(Region object) {
+        object.setCursor(Cursor.HAND);
     }
 
     public void showAlert(Alert.AlertType type, String message) {

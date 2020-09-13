@@ -12,7 +12,7 @@ public class Form {
 
     public void addEventHandlerToSubmitButton(EventHandler<ActionEvent> eventHandler) {
         submitButton.setOnAction(eventHandler);
-        View.addCursorHandling(submitButton, formView);
+        View.setCursorAsSelect(submitButton);
         formView.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER){
                 submitButton.fire();
