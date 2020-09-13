@@ -39,7 +39,7 @@ public class View {
     private final MenuItem elect, showResults;
     private final MenuItem clear, exit;
 
-    //gets 18 first fields (all Menu Items) in this class and sets their ID as their name
+    //gets 19 first fields (all Menu Items) in this class and sets their ID as their name
     private void initMenuItemsIDs() throws IllegalAccessException {
         for (int i = 0; i < 19; i++) {
             Field item = this.getClass().getDeclaredFields()[i];
