@@ -29,13 +29,26 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class View {
-    private final BorderPane borderPane;
+
+    //--------------------- Menu Items --------------------//
+    //  Don't Add any Fields Before these, Otherwise initMenuItemsIDs will Break!
     private final MenuItem showAB, addMRB, addBM, addRB;
     private final MenuItem showAC, addMRC, addCM, addRC;
     private final MenuItem showAP, addPM, addRP, addMRP;
     private final MenuItem addNM, addRN, addMRN;
     private final MenuItem elect, showResults;
     private final MenuItem clear, exit;
+
+    //gets 18 first fields (all Menu Items) in this class and sets their ID as their name
+    private void initMenuItemsIDs() throws IllegalAccessException {
+        for (int i = 0; i < 19; i++) {
+            Field item = this.getClass().getDeclaredFields()[i];
+            ((MenuItem) item.get(this)).setId(item.getName());
+        }
+    }
+    //-----------------------------------------------------//
+
+    private final BorderPane borderPane;
     private final Alert alert;
     private static boolean firstLaunch = true;
 
@@ -426,13 +439,6 @@ public class View {
 
     public void triggerShowResults() {
         showResults.fire();
-    }
-
-    private void initMenuItemsIDs() throws IllegalAccessException {
-        for (int i = 1; i <= 19; i++) {
-            Field item = this.getClass().getDeclaredFields()[i];
-            ((MenuItem) item.get(this)).setId(item.getName());
-        }
     }
 
     public void addEventHandlerToMenuItem(String menuItemID, EventHandler<ActionEvent> eventHandler) {
