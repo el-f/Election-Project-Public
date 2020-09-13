@@ -105,7 +105,7 @@ public class View {
         initMenuItemsIDs();
         menuBar.getMenus().addAll(misc, ballotBoxesMenu, citizensMenu, partiesMenu, nomineesMenu, electionMenu);
         borderPane = new BorderPane();
-        Button backButton = new Button("<-");
+        Button backButton = new Button("⬅");
         backButton.setOnAction(event -> clear.fire());
         addCursorHandling(backButton, borderPane);
         HBox top = new HBox(backButton, menuBar);
