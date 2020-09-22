@@ -2,7 +2,6 @@ package View;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -17,6 +16,7 @@ public class CitizenInitForm extends Form {
     public final String type;
 
     public CitizenInitForm(String type) {
+        super();
         this.type = type;
         HBox nameBox = new HBox();
         name = new TextField();
@@ -28,7 +28,7 @@ public class CitizenInitForm extends Form {
         yearOfBirth = new TextField();
         View.alignTextField("Year Of Birth: ", yearOfBirth, yobBox);
         Text text = new Text("Please Fill all fields:");
-        formView = new VBox(text, nameBox, IDBox, yobBox);
+        formView.getChildren().addAll(text, nameBox, IDBox, yobBox);
         formView.setAlignment(Pos.CENTER);
         VBox.setMargin(nameBox, new Insets(0, 350, 0, 0));
         VBox.setMargin(IDBox, new Insets(0, 350, 0, 0));
@@ -54,7 +54,6 @@ public class CitizenInitForm extends Form {
             formView.getChildren().add(partyBox);
             VBox.setMargin(partyBox, new Insets(0, 350, 0, 0));
         }
-        submitButton = new Button("Submit");
         formView.getChildren().add(submitButton);
         formView.setSpacing(10);
     }

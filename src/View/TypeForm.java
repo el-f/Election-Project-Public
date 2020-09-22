@@ -2,7 +2,6 @@ package View;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -12,15 +11,15 @@ public class TypeForm extends Form {
     private final RadioButton regular, sick, soldier, sickSoldier;
 
     public TypeForm() {
+        super("Submit Type");
         ToggleGroup toggleGroup = new ToggleGroup();
         regular = new RadioButton("Citizen");
         regular.setSelected(true);
         sick = new RadioButton("Sick Citizen");
         soldier = new RadioButton("Soldier");
         sickSoldier = new RadioButton("Sick Soldier");
-        submitButton = new Button("Submit Type");
         Text text = new Text("Please Choose Type:");
-        formView = new VBox(text, regular, sick, soldier, sickSoldier, submitButton);
+        formView.getChildren().addAll(text, regular, sick, soldier, sickSoldier, submitButton);
         formView.setAlignment(Pos.CENTER_LEFT);
         formView.setSpacing(10);
         formView.getChildren()

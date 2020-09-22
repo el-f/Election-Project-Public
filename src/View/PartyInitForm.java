@@ -3,7 +3,6 @@ package View;
 import Model.MyException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -18,6 +17,7 @@ public class PartyInitForm extends Form {
     public final RadioButton leftWing, rightWing, centerWing;
 
     public PartyInitForm() {
+        super();
         name = new TextField();
         year = new TextField();
         year.setPrefWidth(80);
@@ -37,14 +37,13 @@ public class PartyInitForm extends Form {
         dateBox.getChildren().addAll(txt, day, new Text(" / "), month, new Text(" / "), year);
         dateBox.setAlignment(Pos.CENTER_RIGHT);
 
-        submitButton = new Button("Submit");
         VBox.setMargin(nameBox, new Insets(0, 350, 0, 0));
         VBox.setMargin(dateBox, new Insets(0, 350, 0, 0));
         Text text = new Text("Please Fill all fields:");
         VBox.setMargin(text, new Insets(0, 0, 0, 400));
         Text wingText = new Text("Wing:");
         VBox.setMargin(wingText, new Insets(0, 0, 0, 400));
-        formView = new VBox(text, nameBox, dateBox, wingText, leftWing, rightWing, centerWing, submitButton);
+        formView.getChildren().addAll(text, nameBox, dateBox, wingText, leftWing, rightWing, centerWing, submitButton);
         Arrays.asList(leftWing, rightWing, centerWing)
                 .forEach(rb -> {
                     rb.setToggleGroup(toggleGroup);
