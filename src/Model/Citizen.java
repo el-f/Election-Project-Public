@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Citizen {
 
-    protected final String name;
+    protected String name;
     protected int id;
     protected int yearOfBirth;
     protected boolean canVote;
@@ -77,6 +77,10 @@ public class Citizen {
         if (checkValidIDLength(_id))
             id = _id;
         else throw new MyException("Invalid Num of ID Digits! (ID: " + _id + ")");
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public static boolean checkValidIDLength(int id) {

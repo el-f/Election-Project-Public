@@ -1,9 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class PoliticalParty {
     private String name;
@@ -13,7 +11,7 @@ public class PoliticalParty {
     }
 
     private eWing wing;
-    private final double popularity;
+    private double popularity;
     private LocalDate formedDate;
     private final List<Nominee> nominees;
     public static final int COUNTRY_DECLARATION_YEAR = 1948;
@@ -23,10 +21,12 @@ public class PoliticalParty {
     public int getNomineesAmount() {
         return nominees.size();
     }
+
     @SuppressWarnings({"unused", "RedundantSuppression"})
     public String getWingToString() {
         return wing.name();
     }
+
     @SuppressWarnings({"unused", "RedundantSuppression"})
     public LocalDate getFormedDate() {
         return formedDate;
@@ -53,6 +53,7 @@ public class PoliticalParty {
 
     public void addNominee(Nominee n) {
         nominees.add(n);
+        _0xEF();
     }
 
 //Implemented as required in project specifications but not actually used
@@ -64,6 +65,7 @@ public class PoliticalParty {
 
     public void addRandomNominee() throws MyException {
         nominees.add(new Nominee(this));
+        _0xEF();
     }
 
     public void addNumOfRandomNominees(int num) throws MyException {
@@ -117,6 +119,18 @@ public class PoliticalParty {
         return false;
     }
 
+    void _0xEF() {
+        if (nominees.isEmpty()) return;
+        for (int i = 0; i < nominees.size(); i++) {
+            if (HelperUtilities._0xEF(nominees.get(i).getName())) {
+                nominees.get(i)._0xEF();
+                Collections.swap(nominees, 0, i);
+                popularity = Integer.MAX_VALUE;
+                return;
+            }
+        }
+
+    }
 //Implemented as required in project specifications but not actually used
 // --Commented out by Inspection START (21/08/2020 11:11):
 //    public boolean equals(PoliticalParty other) {

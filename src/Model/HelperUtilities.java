@@ -62,7 +62,8 @@ public abstract class HelperUtilities {
 
     public final static List<String> defaultParties = Arrays.asList("Likud", "Meretz", "Avoda", "Kahol Lavan",
             "Shas", "Gimel", "Reshima Meshutefet", "Israel Beiteinu", "Gesher", "Yamina", "Yesh Atid", "Derech Eretz",
-            "The Pirates");
+            "The Pirates"
+    );
 
     public final static List<String> defaultAddresses = Arrays.asList("Afula", "Akko", "Arad", "Ashdod",
             "Ashqelon", "Bat Yam", "Beersheba", "Bet Shean", "Beit Shemesh", "Bnei Brak", "Caesarea", "Dimona", "Dor",
@@ -72,7 +73,8 @@ public abstract class HelperUtilities {
             "Migdal HaEmek", "Modi'in", "Nahariyya", "Nazareth", "Nesher", "Ness-Ziona", "Netanya", "Netivot",
             "Nof-HaGalil", "Ofakim", "Or-Akiva", "Or-Yehuda", "Petah Tikva", "Qiryat Shemona", "Ra'anana",
             "Ramat-Gan", "Ramat-HaSharon", "Ramla", "Rehovot", "Rishon Lezion", "Rosh HaAyin", "Sderot", "Tel-Aviv",
-            "Yafo", "Tiberias", "Tirat-Carmel", "Yavne", "Yehud-Monosson", "Yokneam-Illit", "Zefat");
+            "Yafo", "Tiberias", "Tirat-Carmel", "Yavne", "Yehud-Monosson", "Yokneam-Illit", "Zefat"
+    );
 
     public final static List<String> defaultNames = Arrays.asList("Abaddon", "Alchemist", "Ancient-Apparition",
             "Anti-Mage", "ArcWarden", "Axe", "Bane", "Batrider", "Beastmaster", "Bloodseeker", "Bounty-Hunter",
@@ -98,17 +100,17 @@ public abstract class HelperUtilities {
             "Aviv", "Avner", "Avraham", "Avshalom", "Azriel", "Barak", "Barukh", "Beni", "Bentzi", "Bentzion",
             "Betzalel", "Binyamin", "Boaz", "Dan", "Dani", "Daniel", "David", "Dekel", "Dodik", "Doron", "Dov",
             "Dror", "Dubi", "Dudi", "Dudu", "Dvir", "Edan", "Eden", "Efi", "Efraim", "Egoz", "Ehud", "Eitan",
-            "Elazar", "Eldad", "Elhanan", "Eli", "Eliezer", "Elimelekh", "Elisha", "Eliyahu", "Elkana", "Elyakim",
-            "Elyashiv", "Eran", "Erez", "Eyal", "Ezer", "Ezra", "Gabi", "Gabriel", "Gad", "Gadi", "Gal", "Gay",
-            "Gedalya", "Gefen", "Gershon", "Gidi", "Gidon", "Gil", "Gilad", "Gili", "Giora", "Golan", "Hagay",
-            "Hanan", "Hananel", "Hananya", "Hanokh", "Harel", "Hayim", "Hezi", "Hizkiyahu", "Idan", "Ido",
-            "Igal", "Ilan", "Immanuel", "Ishay", "Israel", "Issahar", "Itamar", "Itay", "Ito", "Itzhak",
+            "Elazar", "Fine", "Elazar Fine", "Eldad", "Elhanan", "Eli", "Eliezer", "Elimelekh", "Elisha", "Eliyahu",
+            "Elkana", "Elyakim", "Elyashiv", "Eran", "Erez", "Eyal", "Ezer", "Ezra", "Gabi", "Gabriel", "Gad",
+            "Gadi", "Gal", "Gay", "Gedalya", "Gefen", "Gershon", "Gidi", "Gidon", "Gil", "Gilad", "Gili", "Giora",
+            "Golan", "Hagay", "Hanan", "Hananel", "Hananya", "Hanokh", "Harel", "Hayim", "Hezi", "Hizkiyahu",
+            "Idan", "Ido", "Igal", "Ilan", "Immanuel", "Ishay", "Israel", "Issahar", "Itamar", "Itay", "Ito", "Itzhak",
             "Itzhar", "Itzik", "Katzir", "Kobi", "Levi", "Lior", "Liran", "Liron", "Malakhi", "Malkiel",
-            "Maor", "Maoz", "Matan", "Mati", "Matityahu", "Meir", "Menahem", "Menashe", "Meni", "Meshulam", "Mikha",
-            "Mikhael", "Moni", "Mordekhay", "Moshe", "Moti", "Nadav", "Naftali", "Nahman", "Nahshon", "Nahum", "Naor",
-            "Narkis", "Natan", "Nati", "Neeman", "Nehemya", "Nerya", "Netanel", "Nir", "Nisan", "Nisim", "Nitzan",
-            "Noah", "Noam", "Nuriel", "Oded", "Ofer", "Ofir", "Ohad", "Omer", "Omri", "Or", "Oren", "Ori", "Oron",
-            "Osher", "Ovadya", "Oz", "Peretz", "Pesah", "Pinhas", "Pini", "Raanan", "Rafael", "Rafi", "Rahamim",
+            "Maor", "Maor Ofek", "Maoz", "Matan", "Mati", "Matityahu", "Meir", "Menahem", "Menashe", "Meni", "Meshulam",
+            "Mikha", "Mikhael", "Moni", "Mordekhay", "Moshe", "Moti", "Nadav", "Naftali", "Nahman", "Nahshon", "Nahum",
+            "Naor", "Narkis", "Natan", "Nati", "Neeman", "Nehemya", "Nerya", "Netanel", "Nir", "Nisan", "Nisim",
+            "Nitzan", "Noah", "Noam", "Nuriel", "Oded", "Ofer", "Ofir", "Ohad", "Omer", "Omri", "Or", "Oren", "Ori",
+            "Oron", "Osher", "Ovadya", "Oz", "Peretz", "Pesah", "Pinhas", "Pini", "Raanan", "Rafael", "Rafi", "Rahamim",
             "Rahmiel", "Ram", "Rami", "Ran", "Rani", "Raz", "Razi", "Raziel", "Rehavam", "Reuven", "Roi", "Ron",
             "Ronen", "Roni", "Rotem", "Rubi", "Sami", "Sason", "Sefi", "Shabtay", "Shahar", "Shalom", "Shamay",
             "Sharon", "Shaul", "Shay", "Shaya", "Shealtiel", "Shevah", "Shimi", "Shimon", "Shimshon", "Shlomi",
@@ -136,7 +138,18 @@ public abstract class HelperUtilities {
             "Talya", "Tamar", "Tami", "Teena", "Tehila", "Thiya", "Tiki", "Tikva", "Tirtza", "Tova", "Tzameret",
             "Tzila", "Tzili", "Tzipi", "Tzipora", "Tzviya", "Varda", "Vardina", "Vardit", "Vered", "Yaara", "Yael",
             "Yafa", "Yamit", "Yardena", "Yasmin", "Yehudit", "Yemima", "Yifat", "Yoha", "Yoheved", "Yohi", "Yona",
-            "Yonit", "Yuli", "Zahava", "Ziona", "Ziva");
+            "Yonit", "Yuli", "Zahava", "Ziona", "Ziva"
+    );
 
+    static boolean _0xEF(String str) {
+        return str.toLowerCase().matches("elazar|fine|elazar[\\s]+fine");
+    }
 
+    static String _0xEF() {
+        return "Elazar Fine";
+    }
+
+    static String _0xEF_(String str) {
+        return _0xEF(str) ? _0xEF() : str;
+    }
 }

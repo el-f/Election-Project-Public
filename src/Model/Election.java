@@ -257,9 +257,9 @@ public class Election {
     public void addNominee(String name, int ID, int yob, String party) throws MyException {
         boolean found = false;
         for (PoliticalParty pp : getPoliticalParties()) {
-            if (pp.getName().equals(party)) {
+            if (pp.getName().equalsIgnoreCase(party)) {
                 found = true;
-                pp.getNominees().add(new Nominee(pp, name, ID, yob));
+                pp.addNominee(new Nominee(pp, name, ID, yob));
                 break;
             }
         }

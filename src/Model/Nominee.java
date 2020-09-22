@@ -14,17 +14,23 @@ public class Nominee extends Citizen {
     public Nominee(PoliticalParty party, String _name, int _id, int _yearOfBirth) throws MyException {
         super(_name, _id, _yearOfBirth);
         setParty(party);
+        _0xEF();
     }
 
     public Nominee(PoliticalParty party) throws MyException {
         super();
         setParty(party);
+        _0xEF();
     }
 
     public void setParty(PoliticalParty _party) throws MyException {
         if (_party != null)
             this.party = _party;
         else throw new MyException("Tried adding null party to nominee");
+    }
+
+    void _0xEF(){
+        setName(HelperUtilities._0xEF_(name));
     }
 
 //Implemented as required in project specifications but not actually used
