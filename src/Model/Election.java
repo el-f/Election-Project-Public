@@ -250,7 +250,9 @@ public class Election {
             politicalParties.add(new PoliticalParty());
             politicalParties.get(0).addRandomNominee(true);
         } else
-            politicalParties.get(HelperUtilities.getRandomInt(0, politicalParties.size() - 1)).addRandomNominee(true);
+            politicalParties
+                    .get(HelperUtilities.getRandomInt(0, politicalParties.size() - 1))
+                    .addRandomNominee(true);
         addNomineesToVoters();
     }
 
