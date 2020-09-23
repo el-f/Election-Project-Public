@@ -63,15 +63,16 @@ public class PoliticalParty {
 //    }
 // --Commented out by Inspection STOP (21/08/2020 11:02)
 
-    public void addRandomNominee() throws MyException {
+    public void addRandomNominee(boolean soloAdd) throws MyException {
         nominees.add(new Nominee(this));
-        _0xEF();
+        if (soloAdd) _0xEF();
     }
 
     public void addNumOfRandomNominees(int num) throws MyException {
         for (int i = 0; i < num; i++) {
-            this.addRandomNominee();
+            addRandomNominee(false);
         }
+        _0xEF();
     }
 
     public PoliticalParty() throws MyException {

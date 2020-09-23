@@ -248,9 +248,9 @@ public class Election {
     public void addRandomNomineeToRandomParty() throws MyException {
         if (politicalParties.isEmpty()) {
             politicalParties.add(new PoliticalParty());
-            politicalParties.get(0).addRandomNominee();
+            politicalParties.get(0).addRandomNominee(true);
         } else
-            politicalParties.get(HelperUtilities.getRandomInt(0, politicalParties.size() - 1)).addRandomNominee();
+            politicalParties.get(HelperUtilities.getRandomInt(0, politicalParties.size() - 1)).addRandomNominee(true);
         addNomineesToVoters();
     }
 
