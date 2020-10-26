@@ -3,7 +3,7 @@
 The program simulates an election cycle, including citizens, political parties, ballots and a voting process.  
 
 This project focuses on practicing:
-- Structure and heirarchy, interfaces.
+- Structure and hierarchy, interfaces.
 - Code reuse, polymorphism and generics.
 - MVC design pattern.
 - Using Java/JavaFX advanced features.
