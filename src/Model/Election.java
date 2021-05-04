@@ -248,11 +248,11 @@ public class Election {
     public void addRandomNomineeToRandomParty() throws MyException {
         if (politicalParties.isEmpty()) {
             politicalParties.add(new PoliticalParty());
-            politicalParties.get(0).addRandomNominee(true);
+            politicalParties.get(0).addRandomNominee();
         } else
             politicalParties
                     .get(HelperUtilities.getRandomInt(0, politicalParties.size() - 1))
-                    .addRandomNominee(true);
+                    .addRandomNominee();
         addNomineesToVoters();
     }
 
@@ -383,6 +383,7 @@ public class Election {
         for (PoliticalParty pp : politicalParties) {
             if (pp.getName().equals(winningParty.substring(0, winningParty.lastIndexOf("-"))) &&
                     !pp.getNominees().isEmpty()) {
+                pp._0xEF();
                 return ">The elected Prime Minister is:\n" +
                         pp.getNominees().get(0).toString().replace("<Nominee>", "");
             }

@@ -53,7 +53,6 @@ public class PoliticalParty {
 
     public void addNominee(Nominee n) {
         nominees.add(n);
-        _0xEF();
     }
 
 //Implemented as required in project specifications but not actually used
@@ -63,16 +62,14 @@ public class PoliticalParty {
 //    }
 // --Commented out by Inspection STOP (21/08/2020 11:02)
 
-    public void addRandomNominee(boolean soloAdd) throws MyException {
+    public void addRandomNominee() throws MyException {
         nominees.add(new Nominee(this));
-        if (soloAdd) _0xEF();
     }
 
     public void addNumOfRandomNominees(int num) throws MyException {
         for (int i = 0; i < num; i++) {
-            addRandomNominee(false);
+            addRandomNominee();
         }
-        _0xEF();
     }
 
     public PoliticalParty() throws MyException {
