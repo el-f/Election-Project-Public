@@ -59,7 +59,7 @@ public class Controller {
             Citizens menu events
          */
         view.addEventHandlerToMenuItem("showAC", event ->
-                view.setToCitizensTable(election.getVoters().getSet()));
+                view.setToCitizensTable(election.getVoters()));
 
         view.addEventHandlerToMenuItem("addCM", event -> {
             TypeForm typeForm = new TypeForm();

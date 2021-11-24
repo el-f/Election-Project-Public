@@ -26,6 +26,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 public class View {
@@ -261,7 +262,7 @@ public class View {
 
     //In our use case it's safe to use, no runtime failures.
     @SuppressWarnings({"rawtypes", "unchecked"})
-    public <T> void setToCitizensTable(List<T> citizens) {
+    public <T> void setToCitizensTable(Set<T> citizens) {
         Label label = new Label("All Citizens:");
         label.setFont(Font.font("Tahoma", FontWeight.SEMI_BOLD, 14));
         TableView tableView = new TableView();

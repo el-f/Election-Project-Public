@@ -39,7 +39,7 @@ public class Election {
     public Election(int year, int month) throws MyException {
         finalResults = new HashMap<>();
         setElectionDate(year, month);
-        voters = new Set<>();
+        voters = new HashSet<>();
         politicalParties = new ArrayList<>();
         ballotBoxes = new ArrayList<>();
     }
@@ -297,11 +297,9 @@ public class Election {
 
     }
 
-    private void addNomineesToVoters() throws MyException {
+    private void addNomineesToVoters(){
         for (PoliticalParty pp : politicalParties)
-            for (Nominee n : pp.getNominees())
-                if (!voters.contains(n))
-                    voters.add(n);
+            voters.addAll(pp.getNominees());
     }
 
     /*
@@ -311,7 +309,7 @@ public class Election {
      */
     public void assignVotersToBoxes() throws MyException {
         addNomineesToVoters();
-        for (Citizen v : voters.getSet()) {
+        for (Citizen v : voters) {
             if (!v.isAssignedToBox()) {
                 checkAndInitNeededBallot(getCitizensType(v));
                 ballotBoxes.get(HelperUtilities.getRandom(getIndexesOfType(getCitizensType(v))))

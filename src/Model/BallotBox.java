@@ -43,12 +43,12 @@ public class BallotBox<T extends Citizen> {
         address = _address;
         this.type = type;
         serialNum = serialNumGen++;
-        designatedCitizens = new Set<>();
+        designatedCitizens = new HashSet<>();
         votingResults = new HashMap<>();
     }
 
     public void randomVote(List<PoliticalParty> parties) {
-        for (T c : designatedCitizens.getSet()) {
+        for (T c : designatedCitizens) {
             /*
              * asks citizen if he wants to vote, a chance for a 'yes' is set in
              * HelperUtilities (HIGH_CHANCE), and checks that he didn't vote yet.
